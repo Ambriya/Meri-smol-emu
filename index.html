@@ -2,71 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Emu</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background: #2b0101; color: white; font-family: serif; overflow: hidden; }
-        
-        /* Each slide takes up the whole screen */
-        .slide { 
-            height: 100vh; 
-            width: 100vw; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-            position: relative;
-        }
-
-        h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: #ff2d55; margin-bottom: 10px; }
-        p { font-size: 1.3rem; line-height: 1.6; max-width: 500px; }
-        
-        .btn { 
-            padding: 15px 40px; 
-            background: #ff2d55; 
-            color: white; 
-            border: none; 
-            border-radius: 50px; 
-            font-size: 1.2rem; 
-            margin-top: 20px;
-            z-index: 100;
-            cursor: pointer;
-        }
-
-        /* The trick: We use a simple scrolling anchor so JavaScript isn't even needed for moving */
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital@1&display=swap');
         html { scroll-behavior: smooth; }
+        body { margin: 0; background: #1a0101; color: white; font-family: 'Playfair Display', serif; text-align: center; }
+        .slide { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; box-sizing: border-box; border-bottom: 2px solid #330000; }
+        h1 { font-family: 'Great Vibes', cursive; color: #ff2d55; font-size: 3.5rem; margin: 0; text-shadow: 0 0 10px rgba(255,45,85,0.4); }
+        p { font-size: 1.4rem; line-height: 1.6; max-width: 450px; color: #f8bbd0; font-style: italic; }
+        .btn { background: #ff2d55; color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-size: 1.2rem; margin-top: 20px; box-shadow: 0 4px 15px rgba(255,45,85,0.4); display: inline-block; }
+        .heart { font-size: 3rem; margin-top: 20px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
 
-    <section id="s1" class="slide">
+    <section class="slide">
         <h1>My Dearest Emu...</h1>
-        <p>I love you with a depth that scares me. You are my home, my sanctuary, and my life’s only truth. Every breath I take begins and ends with you.</p>
-        <a href="#s2"><button class="btn">Feel My Heart ❤️</button></a>
+        <p>I love you with a depth that scares me. You are my home and my life’s only truth. Every breath I take begins and ends with you.</p>
+        <a href="#two" class="btn">Feel My Heart ❤️</a>
     </section>
 
-    <section id="s2" class="slide">
+    <section id="two" class="slide">
         <h1>I Ache For You</h1>
-        <p>I miss the electricity of your skin and the way you look at me in the quiet moments. My soul calls out for yours, desperate to be near you.</p>
-        <a href="#s3"><button class="btn">A Question... 💋</button></a>
+        <p>I miss the electricity of your skin and the way you look at me. My soul calls out for yours, desperate to be reunited.</p>
+        <a href="#three" class="btn">A Question... 💋</a>
     </section>
 
-    <section id="s3" class="slide">
+    <section id="three" class="slide">
         <h1>Meri Emu...</h1>
-        <p>In this dance of stars and shadows, I crave your light. Will you be my Valentine, tonight and forever?</p>
-        <a href="#s4"><button class="btn">YES, Forever 🔥</button></a>
+        <p>Will you be my Valentine, tonight and forever?</p>
+        <a href="#four" class="btn">YES, Forever 🔥</a>
     </section>
 
-    <section id="s4" class="slide">
+    <section id="four" class="slide">
         <h1>I Miss "US"</h1>
-        <p>I want to lose myself in you again. I want to be wrapped in your arms forever. Call me now... I'm waiting for you. 🌹💋❤️</p>
+        <p>I want to lose myself in you again. I want to be wrapped in your arms forever. Call me now... I'm waiting.</p>
+        <div class="heart">🌹💋❤️</div>
     </section>
-
-    <iframe src="https://www.youtube.com/embed/P8jOubZtxKw?autoplay=1" style="display:none" allow="autoplay"></iframe>
 
 </body>
 </html>

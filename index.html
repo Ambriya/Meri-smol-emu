@@ -3,61 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Emu</title>
+    <title>For Emu</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;1,700&display=swap');
-
-        :root { --crimson: #7b0000; --rose: #ff2d55; --gold: #d4af37; }
-        
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background: radial-gradient(circle, #2b0101 0%, #000 100%); color: #fff; overflow: hidden; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; }
-        
-        #music-player { position: absolute; visibility: hidden; width: 0; height: 0; }
-        
-        /* Floating Elements */
-        .particle { position: absolute; pointer-events: none; z-index: 1; animation: floatUp 7s linear infinite; opacity: 0.8; }
-        @keyframes floatUp { 0% { transform: translateY(110vh) rotate(0deg) scale(1); opacity: 0; } 20% { opacity: 0.8; } 100% { transform: translateY(-20vh) rotate(360deg) scale(1.5); opacity: 0; } }
-
-        /* Slide Styling */
-        .slide { position: absolute; width: 85%; max-width: 600px; text-align: center; display: none; flex-direction: column; align-items: center; z-index: 10; transition: 1s ease-in-out; }
-        .active { display: flex !important; animation: fadeIn 2s ease-in-out; }
-
-        h1 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--rose); text-shadow: 0 0 20px rgba(255, 45, 85, 0.6); margin-bottom: 10px; }
-        p { font-size: 1.5rem; line-height: 1.8; color: #f8bbd0; font-style: italic; text-shadow: 1px 1px 5px #000; }
-
-        .btn { padding: 15px 40px; font-size: 1.3rem; cursor: pointer; border-radius: 50px; border: 1px solid var(--gold); background: rgba(0,0,0,0.5); color: var(--gold); margin-top: 30px; transition: 0.4s; font-family: 'Playfair Display', serif; text-transform: uppercase; letter-spacing: 2px; }
-        .btn:hover { background: var(--rose); color: white; border-color: var(--rose); box-shadow: 0 0 30px var(--rose); }
-
-        #noBtn { position: absolute; background: #333; border: none; color: #999; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-
-        #splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        body, html { margin:0; padding:0; height:100%; width:100%; background:#000; color:#fff; font-family:serif; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+        #splash { position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+        .slide { position:absolute; width:85%; text-align:center; display:none; flex-direction:column; align-items:center; }
+        .active { display:flex !important; }
+        .btn { padding:15px 30px; background:#ff2d55; color:white; border:none; border-radius:50px; cursor:pointer; margin-top:20px; font-size:1.2rem; }
+        .particle { position:absolute; pointer-events:none; z-index:1; animation:float 6s linear infinite; }
+        @keyframes float { 0% { transform:translateY(110vh); opacity:0; } 10% { opacity:1; } 100% { transform:translateY(-20vh); opacity:0; } }
     </style>
 </head>
 <body>
 
     <div id="splash">
-        <h1 style="color: white;">For Emu...</h1>
-        <p>A journey into my heart.</p>
-        <button class="btn" onclick="start()">Tap to Enter ❤️</button>
+        <h1>For Emu ❤️</h1>
+        <button class="btn" onclick="startApp()">Tap to Enter</button>
     </div>
 
-    <iframe id="music-player" src="https://www.youtube.com/embed/P8jOubZtxKw?enablejsapi=1" allow="autoplay"></iframe>
+    <iframe id="music" src="https://www.youtube.com/embed/P8jOubZtxKw?enablejsapi=1" style="display:none"></iframe>
 
     <div id="slide1" class="slide">
-        <h1>My Dearest Emu...</h1>
-        <p>They say the universe is vast, but it is nothing compared to the space you occupy in my soul. I love you with a depth that scares me—a devotion so absolute that every thought, every dream, and every breath I take begins and ends with you. You are my home, my sanctuary, and my life’s only truth.</p>
-        <button class="btn" onclick="nextSlide(2)">Feel My Heart</button>
+        <h1 style="color:#ff2d55">My Dearest Emu...</h1>
+        <p>I love you with a depth that scares me. You are my home and my life's only truth.</p>
+        <button class="btn" onclick="go(2)">Feel My Heart</button>
     </div>
 
     <div id="slide2" class="slide">
-        <h1>I Acher for You</h1>
-        <p>My heart feels like a hollow chamber when you aren't near. I miss the electricity of your skin, the way you look at me in the quiet moments, and the beautiful intimacy that only we share. Every night, my soul calls out for yours, desperate to be reunited in the heat of our love.</p>
-        <button class="btn" onclick="nextSlide(3)">A Question for You...</button>
+        <h1 style="color:#ff2d55">I Ache For You</h1>
+        <p>I miss the electricity of your skin and the way you look at me in the quiet moments.</p>
+        <button class="btn" onclick="go(3)">A Question...</button>
     </div>
 
     <div id="slide3" class="slide">
-        <h1>Meri Emu...</h1>
-        <p>In this dance of stars and shadows,<br>I crave your light above all else.<br>Will you be the fire in my winter?<br>Will you be my Valentine, tonight and forever?</p>
-        <div style="position: relative; height: 150px; width: 100%;">
-            <button id="yesBtn" class="btn" onclick="next
+        <h1 style="color:#ff2d55">Meri Emu...</h1>
+        <p>Will you be my Valentine, tonight and forever?</p>
+        <button class="btn" onclick="go(4)">YES, Forever</button>
+    </div>
+
+    <div id="slide4" class="slide">
+        <h1 style="color:#ff2d55">I Miss US</h1>
+        <p>I want to lose myself in you again. Call me now... I'm waiting. 💋🔥</p>
+    </div>
+
+    <script>
+        function startApp() {
+            document.getElementById('splash').style.display = 'none';
+            document.getElementById('slide1').classList.add('active');
+            var player = document.getElementById('music');
+            player.src += "&autoplay=1";
+            for(let i=0; i<15; i++) { setTimeout(spawn, i*300); }
+        }
+        function go(n) {
+            var slides = document.getElementsByClassName('slide');
+            for(var i=0; i<slides.length; i++) { slides[i].classList.remove('active'); }
+            document.getElementById('slide'+n).classList.add('active');
+        }
+        function spawn() {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.innerHTML = ['❤️','💋','✨'][Math.floor(Math.random()*3)];
+            p.style.left = Math.random()*100+'vw';
+            p.style.fontSize = '20px';
+            document.body.appendChild(p);
+            setTimeout(() => { p.remove(); spawn(); }, 6000);
+        }
+    </script>
+</body>
+</html>

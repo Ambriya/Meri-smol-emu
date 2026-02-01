@@ -3,119 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Emu - My Everglow</title>
-    
-    <meta property="og:title" content="A special surprise for Emu ❤️">
-    <meta property="og:image" content="1.jpg"> 
-    <meta property="og:type" content="website">
-
+    <title>For My Emu</title>
     <style>
-        :root { --rose: #ff4d6d; --gold: #d4af37; }
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; color: #fff; font-family: 'Garamond', serif; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;1,700&display=swap');
+
+        :root { --crimson: #7b0000; --rose: #ff2d55; --gold: #d4af37; }
+        
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background: radial-gradient(circle, #2b0101 0%, #000 100%); color: #fff; overflow: hidden; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; }
+        
         #music-player { position: absolute; visibility: hidden; width: 0; height: 0; }
         
-        /* Splash Screen to fix the "Freeze" */
-        #splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 1s; }
-        
-        .slide { position: absolute; width: 85%; max-width: 450px; text-align: center; display: none; flex-direction: column; align-items: center; z-index: 10; }
-        .active { display: flex !important; animation: fadeIn 1.5s ease-in; }
+        /* Floating Elements */
+        .particle { position: absolute; pointer-events: none; z-index: 1; animation: floatUp 7s linear infinite; opacity: 0.8; }
+        @keyframes floatUp { 0% { transform: translateY(110vh) rotate(0deg) scale(1); opacity: 0; } 20% { opacity: 0.8; } 100% { transform: translateY(-20vh) rotate(360deg) scale(1.5); opacity: 0; } }
 
-        .slide-img { width: 220px; height: 220px; object-fit: cover; border-radius: 50%; border: 3px solid var(--rose); margin-bottom: 20px; box-shadow: 0 0 20px var(--rose); background: #1a1a1a; }
+        /* Slide Styling */
+        .slide { position: absolute; width: 85%; max-width: 600px; text-align: center; display: none; flex-direction: column; align-items: center; z-index: 10; transition: 1s ease-in-out; }
+        .active { display: flex !important; animation: fadeIn 2s ease-in-out; }
 
-        h1 { font-size: 2.2rem; font-style: italic; color: var(--rose); margin-bottom: 15px; }
-        p { font-size: 1.3rem; line-height: 1.6; color: #f8bbd0; margin-bottom: 20px; }
+        h1 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--rose); text-shadow: 0 0 20px rgba(255, 45, 85, 0.6); margin-bottom: 10px; }
+        p { font-size: 1.5rem; line-height: 1.8; color: #f8bbd0; font-style: italic; text-shadow: 1px 1px 5px #000; }
 
-        .btn { padding: 15px 35px; font-size: 1.1rem; cursor: pointer; border-radius: 50px; border: none; background: var(--rose); color: white; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); }
-        #noBtn { position: absolute; background: #444; transition: 0.1s linear; z-index: 100; }
-        .next-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
+        .btn { padding: 15px 40px; font-size: 1.3rem; cursor: pointer; border-radius: 50px; border: 1px solid var(--gold); background: rgba(0,0,0,0.5); color: var(--gold); margin-top: 30px; transition: 0.4s; font-family: 'Playfair Display', serif; text-transform: uppercase; letter-spacing: 2px; }
+        .btn:hover { background: var(--rose); color: white; border-color: var(--rose); box-shadow: 0 0 30px var(--rose); }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        #noBtn { position: absolute; background: #333; border: none; color: #999; }
 
-        .heart { position: absolute; z-index: 1; animation: float 6s linear infinite; opacity: 0.6; color: var(--rose); pointer-events: none; }
-        @keyframes float { 0% { transform: translateY(110vh); } 100% { transform: translateY(-20vh); } }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+        #splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
 
     <div id="splash">
-        <h1 style="color: white;">For Your Eyes Only</h1>
-        <button class="btn" onclick="startExperience()">Tap to Enter ❤️</button>
+        <h1 style="color: white;">For Emu...</h1>
+        <p>A journey into my heart.</p>
+        <button class="btn" onclick="start()">Tap to Enter ❤️</button>
     </div>
 
     <iframe id="music-player" src="https://www.youtube.com/embed/P8jOubZtxKw?enablejsapi=1" allow="autoplay"></iframe>
 
     <div id="slide1" class="slide">
-        <h1>I Miss You, Emu...</h1>
-        <img src="1.jpg" class="slide-img" alt="Memory 1">
-        <p>Every moment away from you feels like a heartbeat missed. I carry the thought of you in everything I do.</p>
-        <button class="btn next-btn" onclick="nextSlide(2)">Open My Heart</button>
+        <h1>My Dearest Emu...</h1>
+        <p>They say the universe is vast, but it is nothing compared to the space you occupy in my soul. I love you with a depth that scares me—a devotion so absolute that every thought, every dream, and every breath I take begins and ends with you. You are my home, my sanctuary, and my life’s only truth.</p>
+        <button class="btn" onclick="nextSlide(2)">Feel My Heart</button>
     </div>
 
     <div id="slide2" class="slide">
-        <h1>Be My Valentine?</h1>
-        <img src="2.jpg" class="slide-img" alt="Memory 2">
-        <p>You are my everglow—the light that never fades. I want this day to be yours.</p>
-        <div style="position: relative; height: 120px; width: 100%;">
-            <button id="yesBtn" class="btn" onclick="nextSlide(3)">Yes</button>
-            <button id="noBtn" class="btn" onmouseover="runAway()" onclick="runAway()">No</button>
-        </div>
+        <h1>I Acher for You</h1>
+        <p>My heart feels like a hollow chamber when you aren't near. I miss the electricity of your skin, the way you look at me in the quiet moments, and the beautiful intimacy that only we share. Every night, my soul calls out for yours, desperate to be reunited in the heat of our love.</p>
+        <button class="btn" onclick="nextSlide(3)">A Question for You...</button>
     </div>
 
     <div id="slide3" class="slide">
-        <h1>Always Yours</h1>
-        <img src="3.jpg" class="slide-img" alt="Memory 3">
-        <p>There is magic in the way we connect. I am so grateful for every second we share.</p>
-        <button class="btn next-btn" onclick="nextSlide(4)">One Last Thing</button>
-    </div>
-
-    <div id="slide4" class="slide">
-        <h1>Call Me</h1>
-        <img src="4.jpg" class="slide-img" alt="Memory 4">
-        <p>I want to hear your voice and feel your love. I'm waiting for you...</p>
-        <div style="font-size: 3rem; margin-top: 10px;">🌹❤️</div>
-    </div>
-
-    <script>
-        function startExperience() {
-            document.getElementById('splash').style.opacity = '0';
-            setTimeout(() => { document.getElementById('splash').style.display = 'none'; }, 1000);
-            document.getElementById('slide1').classList.add('active');
-            playMusic();
-        }
-
-        function playMusic() {
-            var player = document.getElementById('music-player');
-            if (player.src.indexOf('autoplay=1') == -1) {
-                player.src += '&autoplay=1';
-            }
-        }
-
-        function nextSlide(n) {
-            var slides = document.getElementsByClassName('slide');
-            for (var i = 0; i < slides.length; i++) {
-                slides[i].classList.remove('active');
-            }
-            document.getElementById('slide' + n).classList.add('active');
-        }
-
-        function runAway() {
-            var btn = document.getElementById('noBtn');
-            var x = Math.random() * (window.innerWidth - 120);
-            var y = Math.random() * (window.innerHeight - 80);
-            btn.style.position = 'fixed';
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
-        }
-
-        setInterval(function() {
-            var h = document.createElement('div');
-            h.className = 'heart';
-            h.innerHTML = '❤️';
-            h.style.left = Math.random() * 100 + 'vw';
-            h.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            document.body.appendChild(h);
-            setTimeout(function() { h.remove(); }, 6000);
-        }, 400);
-    </script>
-</body>
-</html>
+        <h1>Meri Emu...</h1>
+        <p>In this dance of stars and shadows,<br>I crave your light above all else.<br>Will you be the fire in my winter?<br>Will you be my Valentine, tonight and forever?</p>
+        <div style="position: relative; height: 150px; width: 100%;">
+            <button id="yesBtn" class="btn" onclick="next

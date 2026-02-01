@@ -2,72 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>For Emu</title>
     <style>
-        body, html { margin:0; padding:0; height:100%; width:100%; background:#000; color:#fff; font-family:serif; overflow:hidden; display:flex; align-items:center; justify-content:center; }
-        #splash { position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-        .slide { position:absolute; width:85%; text-align:center; display:none; flex-direction:column; align-items:center; }
-        .active { display:flex !important; }
-        .btn { padding:15px 30px; background:#ff2d55; color:white; border:none; border-radius:50px; cursor:pointer; margin-top:20px; font-size:1.2rem; }
-        .particle { position:absolute; pointer-events:none; z-index:1; animation:float 6s linear infinite; }
-        @keyframes float { 0% { transform:translateY(110vh); opacity:0; } 10% { opacity:1; } 100% { transform:translateY(-20vh); opacity:0; } }
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background: #2b0101; color: white; font-family: serif; overflow: hidden; }
+        
+        /* Each slide takes up the whole screen */
+        .slide { 
+            height: 100vh; 
+            width: 100vw; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: #ff2d55; margin-bottom: 10px; }
+        p { font-size: 1.3rem; line-height: 1.6; max-width: 500px; }
+        
+        .btn { 
+            padding: 15px 40px; 
+            background: #ff2d55; 
+            color: white; 
+            border: none; 
+            border-radius: 50px; 
+            font-size: 1.2rem; 
+            margin-top: 20px;
+            z-index: 100;
+            cursor: pointer;
+        }
+
+        /* The trick: We use a simple scrolling anchor so JavaScript isn't even needed for moving */
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
 
-    <div id="splash">
-        <h1>For Emu ❤️</h1>
-        <button class="btn" onclick="startApp()">Tap to Enter</button>
-    </div>
+    <section id="s1" class="slide">
+        <h1>My Dearest Emu...</h1>
+        <p>I love you with a depth that scares me. You are my home, my sanctuary, and my life’s only truth. Every breath I take begins and ends with you.</p>
+        <a href="#s2"><button class="btn">Feel My Heart ❤️</button></a>
+    </section>
 
-    <iframe id="music" src="https://www.youtube.com/embed/P8jOubZtxKw?enablejsapi=1" style="display:none"></iframe>
+    <section id="s2" class="slide">
+        <h1>I Ache For You</h1>
+        <p>I miss the electricity of your skin and the way you look at me in the quiet moments. My soul calls out for yours, desperate to be near you.</p>
+        <a href="#s3"><button class="btn">A Question... 💋</button></a>
+    </section>
 
-    <div id="slide1" class="slide">
-        <h1 style="color:#ff2d55">My Dearest Emu...</h1>
-        <p>I love you with a depth that scares me. You are my home and my life's only truth.</p>
-        <button class="btn" onclick="go(2)">Feel My Heart</button>
-    </div>
+    <section id="s3" class="slide">
+        <h1>Meri Emu...</h1>
+        <p>In this dance of stars and shadows, I crave your light. Will you be my Valentine, tonight and forever?</p>
+        <a href="#s4"><button class="btn">YES, Forever 🔥</button></a>
+    </section>
 
-    <div id="slide2" class="slide">
-        <h1 style="color:#ff2d55">I Ache For You</h1>
-        <p>I miss the electricity of your skin and the way you look at me in the quiet moments.</p>
-        <button class="btn" onclick="go(3)">A Question...</button>
-    </div>
+    <section id="s4" class="slide">
+        <h1>I Miss "US"</h1>
+        <p>I want to lose myself in you again. I want to be wrapped in your arms forever. Call me now... I'm waiting for you. 🌹💋❤️</p>
+    </section>
 
-    <div id="slide3" class="slide">
-        <h1 style="color:#ff2d55">Meri Emu...</h1>
-        <p>Will you be my Valentine, tonight and forever?</p>
-        <button class="btn" onclick="go(4)">YES, Forever</button>
-    </div>
+    <iframe src="https://www.youtube.com/embed/P8jOubZtxKw?autoplay=1" style="display:none" allow="autoplay"></iframe>
 
-    <div id="slide4" class="slide">
-        <h1 style="color:#ff2d55">I Miss US</h1>
-        <p>I want to lose myself in you again. Call me now... I'm waiting. 💋🔥</p>
-    </div>
-
-    <script>
-        function startApp() {
-            document.getElementById('splash').style.display = 'none';
-            document.getElementById('slide1').classList.add('active');
-            var player = document.getElementById('music');
-            player.src += "&autoplay=1";
-            for(let i=0; i<15; i++) { setTimeout(spawn, i*300); }
-        }
-        function go(n) {
-            var slides = document.getElementsByClassName('slide');
-            for(var i=0; i<slides.length; i++) { slides[i].classList.remove('active'); }
-            document.getElementById('slide'+n).classList.add('active');
-        }
-        function spawn() {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            p.innerHTML = ['❤️','💋','✨'][Math.floor(Math.random()*3)];
-            p.style.left = Math.random()*100+'vw';
-            p.style.fontSize = '20px';
-            document.body.appendChild(p);
-            setTimeout(() => { p.remove(); spawn(); }, 6000);
-        }
-    </script>
 </body>
 </html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Emu - My Everglow</title>
+    
+    <meta property="og:title" content="A special surprise for Emu ❤️">
+    <meta property="og:description" content="Open this only if you are mine.">
+    <meta property="og:image" content="1.jpg"> 
+    <meta property="og:type" content="website">
+
+    <style>
+        :root { --deep-red: #4a0404; --rose: #ff4d6d; --gold: #d4af37; }
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; font-family: 'Garamond', serif; background: #000; color: #fff; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        #music-player { position: absolute; visibility: hidden; width: 0; height: 0; }
+        
+        .slide { position: absolute; width: 85%; max-width: 500px; text-align: center; display: none; flex-direction: column; align-items: center; animation: fadeIn 2s ease-in; }
+        .active { display: flex; }
+
+        /* Image Styling */
+        .slide-img { width: 220px; height: 220px; object-fit: cover; border-radius: 50%; border: 3px solid var(--rose); margin-bottom: 20px; box-shadow: 0 0 20px var(--rose); }
+
+        h1 { font-size: 2.5rem; font-style: italic; color: var(--rose); text-shadow: 0 0 10px rgba(255, 77, 109, 0.5); margin-bottom: 20px; }
+        p { font-size: 1.4rem; line-height: 1.8; color: #f8bbd0; }
+
+        .btn-container { position: relative; margin-top: 40px; width: 100%; height: 120px; }
+        .btn { padding: 15px 40px; font-size: 1.2rem; cursor: pointer; border: none; transition: 0.3s; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        #yesBtn { background: var(--rose); color: white; box-shadow: 0 0 20px var(--rose); z-index: 10; }
+        #noBtn { background: transparent; color: #aaa; border: 1px solid #444; position: absolute; transition: 0.1s linear; }
+
+        .next-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); margin-top: 20px; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .heart { position: absolute; z-index: -1; animation: floatUp 6s infinite linear; opacity: 0.5; }
+        @keyframes floatUp { 0% { transform: translateY(110vh); } 100% { transform: translateY(-20vh); } }
+    </style>
+</head>
+<body onclick="playMusic()">
+
+    <iframe id="music-player" src="https://www.youtube.com/embed/P8jOubZtxKw?enablejsapi=1" allow="autoplay"></iframe>
+
+    <div id="slide1" class="slide active">
+        <h1>I Miss You, Emu...</h1>
+        <img src="1.jpg" class="slide-img" alt="Memory 1">
+        <p>Every moment away from you feels like a heartbeat missed. I carry the thought of you in everything I do.</p>
+        <button class="btn next-btn" onclick="nextSlide(2)">Open My Heart</button>
+    </div>
+
+    <div id="slide2" class="slide">
+        <h1>Be My Valentine?</h1>
+        <img src="2.jpg" class="slide-img" alt="Memory 2">
+        <p>You are my everglow—the light that never fades. I want this day to be yours.</p>
+        <div class="btn-container">
+            <button id="yesBtn" class="btn" onclick="nextSlide(3)">Yes</button>
+            <button id="noBtn" class="btn" onmouseover="runAway()">No</button>
+        </div>
+    </div>
+
+    <div id="slide3" class="slide">
+        <h1>Always Yours</h1>
+        <img src="3.jpg" class="slide-img" alt="Memory 3">
+        <p>There is magic in the way we connect. I am so grateful for every second we share.</p>
+        <button class="btn next-btn" onclick="nextSlide(4)">One Last Thing</button>
+    </div>
+
+    <div id="slide4" class="slide">
+        <h1>Call Me</h1>
+        <img src="4.jpg" class="slide-img" alt="Memory 4">
+        <p>I want to hear your voice and feel your love. I'm waiting for you...</p>
+        <div style="font-size: 3rem; margin-top: 20px;">🌹❤️</div>
+    </div>
+
+    <script>
+        function playMusic() {
+            const player = document.getElementById('music-player');
+            if (!player.src.includes("autoplay=1")) {
+                player.src += "&autoplay=1";
+            }
+            document.body.style.background = "radial-gradient(circle, #2b0202 0%, #000 100%)";
+        }
+
+        function nextSlide(n) {
+            document.querySelectorAll('.slide').forEach(s => s.style.display = 'none');
+            document.getElementById('slide'
